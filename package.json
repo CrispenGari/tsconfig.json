@@ -1,6 +1,6 @@
 {
-  "name": "ts-config.json",
-  "version": "1.0.0",
+  "name": "ts-config-files.json",
+  "version": "1.0.2",
   "description": "THIS IS A BOILER PLATE PACKAGE FOR typescript config files.",
   "main": "src index.js",
   "bin": "src/index.js",
