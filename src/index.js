@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-import path from "path";
-import inquirer from "inquirer";
-import { config } from "process";
-import { writeFile, readdir, readFile } from "fs/promises";
-import { encode } from "querystring";
+const path = require("path");
+const inquirer = require("inquirer");
+const { writeFile, readdir, readFile } = require("fs/promises");
 const main = async () => {
   const { choice } = await inquirer.prompt([
     {
@@ -27,26 +25,26 @@ const main = async () => {
   if (confirm[0] === "no") {
     return;
   } else {
-    const tsconfigPath = path.join(process.cwd(), "tsconfig.json");
+    const tsconfigPath = path.resolve(process.cwd(), "tsconfig.json");
     let config = "";
     if (choice === "node") {
       config = await readFile(
-        path.join(process.cwd(), "src/configs/ts-node.json"),
+        path.resolve(__dirname, "configs/ts-node.json"),
         "utf8"
       );
     } else if (choice === "next") {
       config = await readFile(
-        path.join(process.cwd(), "src/configs/ts-next.json"),
+        path.resolve(__dirname, "configs/ts-next.json"),
         "utf8"
       );
     } else if (choice === "react") {
       config = await readFile(
-        path.join(process.cwd(), "src/configs/ts-react.json"),
+        path.resolve(__dirname, "configs/ts-react.json"),
         "utf8"
       );
     } else {
       config = await readFile(
-        path.join(process.cwd(), "src/configs/ts-react-native.json"),
+        path.resolve(__dirname, "configs/ts-react-native.json"),
         "utf8"
       );
     }
